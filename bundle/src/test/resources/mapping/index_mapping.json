@@ -1,0 +1,81 @@
+{
+    "settings": {
+        "analysis": {
+            "analyzer": {
+                "path-analyzer": {
+                    "type": "custom",
+                    "tokenizer": "path-tokenizer"
+                }
+            },
+            "tokenizer": {
+                "path-tokenizer": {
+                    "type": "path_hierarchy",
+                    "delimiter": "/"
+                }
+            }
+        }
+    },
+    "mappings": {
+        "cq_Page": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "nodeType": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string",
+                    "index_analyzer": "path-analyzer"
+                }
+            }
+        },
+        "dam_Asset": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "nodeType": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string",
+                    "index_analyzer": "path-analyzer"
+                },
+                "file": {
+                    "type": "attachment",
+                    "path": "full",
+                    "fields": {
+                        "file": {
+                            "type": "string",
+                            "term_vector":"with_positions_offsets",
+                            "store": true
+                        },
+                        "author": {
+                            "type": "string"
+                        },
+                        "title": {
+                            "type": "string",
+                            "store": "yes"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "date": {
+                            "type": "date",
+                            "ignore_malformed": false,
+                            "format": "dateOptionalTime"
+                        },
+                        "keywords": {
+                            "type": "string"
+                        },
+                        "content_type": {
+                            "type": "string"
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
