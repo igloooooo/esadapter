@@ -19,6 +19,7 @@
 
             <div class="widget-body">
                 <div class="widget-main">
+                    <cq:include path="queryexample" resourceType="/apps/esadapter/components/general/esadapter/queryexample"/>
                     <div>
                         <label for="queryContent">Query</label>
                         <textarea class="form-control" id="queryContent" placeholder="Default Text" rows="3"></textarea>
