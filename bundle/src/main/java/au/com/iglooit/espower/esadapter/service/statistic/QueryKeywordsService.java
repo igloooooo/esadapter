@@ -1,6 +1,7 @@
 package au.com.iglooit.espower.esadapter.service.statistic;
 
 import au.com.iglooit.espower.esadapter.core.dto.statistic.KeywordsDTO;
+import au.com.iglooit.espower.esadapter.core.index.SystemIndexConst;
 import au.com.iglooit.espower.esadapter.service.es.ElasticClient;
 import au.com.iglooit.espower.esadapter.service.ESQueryService;
 import com.google.common.base.Function;
@@ -30,9 +31,8 @@ public class QueryKeywordsService {
     private ElasticClient elasticClient;
 
     public List<KeywordsDTO> top5Keywords() {
-        List<KeywordsDTO> result = new ArrayList<KeywordsDTO>();
-        SearchResponse response = elasticClient.getClient().prepareSearch(ESQueryService.SYSTEM_INDEX)
-                .setTypes(ESQueryService.HISTORY_TYPE)
+        SearchResponse response = elasticClient.getClient().prepareSearch(SystemIndexConst.SYSTEM_INDEX)
+                .setTypes(SystemIndexConst.HISTORY_TYPE)
                 .addAggregation(
                         AggregationBuilders.terms("field").field("query"))
                 .execute().actionGet();

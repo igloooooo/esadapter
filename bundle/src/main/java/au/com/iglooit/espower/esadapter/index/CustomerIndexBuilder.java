@@ -3,7 +3,6 @@ package au.com.iglooit.espower.esadapter.index;
 import au.com.iglooit.espower.esadapter.core.dto.CustomerFieldMapItemDTO;
 import au.com.iglooit.espower.esadapter.core.dto.FieldMappingDTO;
 import au.com.iglooit.espower.esadapter.core.ex.ESIndexBuilderX;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.common.xcontent.XContentBuilder;
@@ -15,6 +14,7 @@ import javax.jcr.Property;
 import javax.jcr.PropertyType;
 import javax.jcr.RepositoryException;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
@@ -42,6 +42,7 @@ public class CustomerIndexBuilder implements IndexBuilder {
     public String buildIndexByNode(Node node, FieldMappingDTO mappingDTO) {
         try {
             XContentBuilder builder = jsonBuilder().startObject();
+            builder.field(CREATION_DATE, (new Date()).getTime());
             parseDef(node, mappingDTO.getChildren(), builder);
             builder.endObject();
             return builder.string();
@@ -50,7 +51,8 @@ public class CustomerIndexBuilder implements IndexBuilder {
         }
     }
 
-    private void parseDef(Node source, List<CustomerFieldMapItemDTO> defList, XContentBuilder builder) throws IOException {
+    private void parseDef(Node source, List<CustomerFieldMapItemDTO> defList, XContentBuilder builder) throws
+            IOException {
 
         for (CustomerFieldMapItemDTO defDto : defList) {
 

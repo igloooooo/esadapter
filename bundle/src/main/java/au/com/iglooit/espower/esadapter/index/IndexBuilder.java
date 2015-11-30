@@ -8,5 +8,6 @@ import javax.jcr.Node;
  * Created by nicholaszhu on 19/10/2015.
  */
 public interface IndexBuilder {
+    public static final String CREATION_DATE = "creation_date";
     String buildIndexByNode(Node node, FieldMappingDTO mappingDTO);
 }

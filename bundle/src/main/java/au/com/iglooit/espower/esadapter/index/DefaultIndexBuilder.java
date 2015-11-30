@@ -16,6 +16,7 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.Date;
 
 import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
 
@@ -48,7 +49,8 @@ public class DefaultIndexBuilder implements IndexBuilder {
             builder.field("id", id)
                     .field("nodeType", node.getPrimaryNodeType().getName())
                     .field("path", node.getPath())
-                    .field("name", node.getName());
+                    .field("name", node.getName())
+                    .field(CREATION_DATE, (new Date()).getTime());
             extractProperties(node.getProperties(), builder);
             // check node type
             // if page

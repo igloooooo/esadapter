@@ -23,8 +23,7 @@ public class ESQueryService {
 
     public final static String DAM_TYPE = "dam_Asset";
     public final static String PAGE_TYPE = "page";
-    public final static String SYSTEM_INDEX = "system";
-    public final static String HISTORY_TYPE = "qh";
+
 
     private final Logger LOGGER = LoggerFactory.getLogger(ESQueryService.class);
     @Reference

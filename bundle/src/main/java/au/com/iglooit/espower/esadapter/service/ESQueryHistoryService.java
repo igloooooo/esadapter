@@ -1,5 +1,6 @@
 package au.com.iglooit.espower.esadapter.service;
 
+import au.com.iglooit.espower.esadapter.core.index.SystemIndexConst;
 import au.com.iglooit.espower.esadapter.service.es.ElasticClient;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Reference;
@@ -19,7 +20,9 @@ public class ESQueryHistoryService {
     public void addQueryHistory(String jsonContent) {
         UUID uuid = UUID.randomUUID();
 
-        IndexResponse response = elasticClient.getClient().prepareIndex("system", "qh", uuid.toString())
+        IndexResponse response = elasticClient.getClient().prepareIndex(SystemIndexConst.SYSTEM_INDEX,
+                SystemIndexConst.HISTORY_TYPE,
+                uuid.toString())
                 .setSource(jsonContent)
                 .execute()
                 .actionGet();
