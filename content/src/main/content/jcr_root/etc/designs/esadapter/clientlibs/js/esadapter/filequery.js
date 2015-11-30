@@ -9,7 +9,7 @@ jQuery(document).ready(function () {
     $("#search").click(function () {
         $.ajax({
             type: "GET",
-            url: "/bin/esadapter/example/filesearch?q=" + $('#queryContent').val(),
+            url: "/bin/esadapter/example/attachmentsearch?q=" + $('#queryContent').val(),
             contentType: 'application/json',
             success: function (e) {
                 var json = e;

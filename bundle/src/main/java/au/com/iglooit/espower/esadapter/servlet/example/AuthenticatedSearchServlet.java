@@ -17,7 +17,8 @@ import java.util.List;
 @Component(metatype = false)
 @Service(javax.servlet.Servlet.class)
 @Properties({
-        @Property(name = "sling.servlet.paths", value = "/bin/esadapter/example/authsearch", label = "Example Auth Search Servlet", description = "ES Adapter - Example Auth Search"),
+        @Property(name = "sling.servlet.paths", value = "/bin/esadapter/example/authsearch",
+                label = "Example Auth Search Servlet", description = "ES Adapter - Example Auth Search"),
         @Property(name = "service.description", value = "ES Adapter - Example Auth Search"),
         @Property(name = "sling.auth.requirements", value = "-/bin/esadapter/example/authsearch"),
         @Property(name = "label", value = "ES Adapter - Example Auth Search")})
@@ -28,7 +29,8 @@ public class AuthenticatedSearchServlet extends SlingSafeMethodsServlet {
     private ExampleService exampleService;
 
     @Override
-    protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException,
+            IOException {
         String content = request.getParameter("q");
         List<String> denyPath = aemaclService.getAccessPath();
         response.setContentType("application/json");
