@@ -24,7 +24,8 @@
                                placeholder="Type your query">
 																	<span class="input-group-btn">
 																		<button type="button"
-                                                                                class="btn btn-purple btn-sm">
+                                                                                class="btn btn-purple btn-sm" data-toggle="modal"
+                                                                                data-target="#path-select-modal">
                                                                             Path
                                                                             <i class="icon-search icon-on-right bigger-110"></i>
                                                                         </button>
@@ -54,7 +55,7 @@
 
     </div>
     <!-- /.col -->
-    <div>
+    <div class="col-xs-12">
         <div class="col-xs-12" id="export-result">
 
         </div>
@@ -79,3 +80,29 @@
         </div>
     </div>
 </script>
+
+<div id="path-select-modal" class="modal fade" tabindex="-1" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header no-padding">
+                <div class="table-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <span class="white">x</span>
+                    </button>
+                    Select Path
+                </div>
+            </div>
+
+            <div class="modal-body fuelux">
+                <div id="tree1" class="tree"></div>
+            </div>
+
+            <div class="modal-footer no-margin-top">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="selectedBtn">OK</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
