@@ -19,7 +19,7 @@
                 <label class="col-sm-3 control-label no-padding-right"> Path </label>
 
                 <div class="col-sm-9">
-                    <div class="input-group col-xs-10 col-sm-5">
+                    <div class="input-group col-xs-10 col-sm-6">
                         <input type="text" id="path-text" class="form-control search-query"
                                placeholder="Type your query">
 																	<span class="input-group-btn">
@@ -93,8 +93,8 @@
                 </div>
             </div>
 
-            <div class="modal-body fuelux">
-                <div id="tree1" class="tree"></div>
+            <div class="modal-body" >
+                <div id="pathTree" class="tree"></div>
             </div>
 
             <div class="modal-footer no-margin-top">

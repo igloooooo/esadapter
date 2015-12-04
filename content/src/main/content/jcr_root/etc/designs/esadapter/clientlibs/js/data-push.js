@@ -99,7 +99,7 @@ jQuery(document).ready(function () {
     });
 
     $("#selectedBtn").click(function () {
-        var selectedItem = $('#tree1').tree('selectedItems');
+        var selectedItem = $('#pathTree').tree('selectedItems');
         if (selectedItem != null) {
             $("#path-text").val(selectedItem[0].path);
         }
@@ -135,7 +135,7 @@ jQuery(document).ready(function () {
         if ($data == null) {
             $.ajax({
                 url: 'http://localhost:4502/bin/tree/ext.json',
-                data: 'path=' + path,
+                data: 'path=' + path + "&predicate=siteadmin",
                 type: 'GET',
                 dataType: 'json',
                 success: function (response) {
@@ -151,7 +151,7 @@ jQuery(document).ready(function () {
 
     var treeDataSource = new DataSourceTree({data: {}});
 
-    $('#tree1').ace_tree({
+    $('#pathTree').ace_tree({
         dataSource: treeDataSource,
         multiSelect: false,
         folderSelect: true,
