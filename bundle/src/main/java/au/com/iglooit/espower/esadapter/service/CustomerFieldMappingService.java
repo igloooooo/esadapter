@@ -3,6 +3,7 @@ package au.com.iglooit.espower.esadapter.service;
 import au.com.iglooit.espower.esadapter.core.dto.CustomerFieldMapItemDTO;
 import au.com.iglooit.espower.esadapter.core.dto.FieldMappingDTO;
 import au.com.iglooit.espower.esadapter.core.mapping.CustomerAssetMapping;
+import au.com.iglooit.espower.esadapter.util.DateUtil;
 import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.commons.jcr.JcrUtil;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -21,10 +22,7 @@ import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by nicholaszhu on 4/11/2015.
@@ -35,6 +33,7 @@ public class CustomerFieldMappingService implements CustomerAssetMapping {
     public static final String CQ_TYPE = "cqType";
     public static final String ES_TYPE = "esType";
     public static final String MAPPING = "mapping";
+    public static final String LAST_UPDATE = "jcr:lastModified";
     private final Logger LOGGER = LoggerFactory.getLogger(CustomerFieldMappingService.class);
     private final String MAPPING_PATH = "/etc/esadaptermap/mapping";
 
@@ -95,6 +94,7 @@ public class CustomerFieldMappingService implements CustomerAssetMapping {
             node.setProperty(CQ_TYPE, cqType);
             node.setProperty(ES_TYPE, type);
             node.setProperty(MAPPING, json);
+            node.setProperty(LAST_UPDATE, Calendar.getInstance());
             updateFieldMapping(getFieldMappingList());
             session.save();
         } catch (RepositoryException e) {
@@ -113,7 +113,6 @@ public class CustomerFieldMappingService implements CustomerAssetMapping {
                 Node item = iterator.nextNode();
                 result.add(parseMapNode(item));
             }
-
         } catch (RepositoryException e) {
             LOGGER.error(e.getMessage(), e);
         }
@@ -125,6 +124,7 @@ public class CustomerFieldMappingService implements CustomerAssetMapping {
         FieldMappingDTO dto = new FieldMappingDTO();
         dto.setCqType(node.getProperty(CQ_TYPE).getString());
         dto.setEsType(node.getProperty(ES_TYPE).getString());
+        dto.setIndex(CUSTOMER_MAPPING_INDEX);
         ObjectMapper mapper = new ObjectMapper();
         try {
             dto.setChildren((List<CustomerFieldMapItemDTO>)mapper.readValue(node.getProperty(MAPPING).getString(),
@@ -132,7 +132,7 @@ public class CustomerFieldMappingService implements CustomerAssetMapping {
         } catch (IOException e) {
             LOGGER.error("Can not parse mapping content.", e);
         }
-//        dto.setLastModified(node.getProperty("jcr:lastModified").getDate());
+        dto.setLastModified(DateUtil.print(node.getProperty(LAST_UPDATE).getDate().getTime()));
         return dto;
 
     }

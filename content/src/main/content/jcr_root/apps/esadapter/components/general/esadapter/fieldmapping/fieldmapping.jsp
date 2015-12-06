@@ -53,20 +53,20 @@
         </td>
 
         <td>
-            <a href="#">{{index}}</a>
+            <a href="/etc/esadapter/fieldmappingdetails.html?type={{esType}}">{{index}}</a>
         </td>
-        <td>{{type}}</td>
+        <td>{{esType}}</td>
         <td class="hidden-480">{{cqType}}</td>
-        <td>10</td>
+        <td>{{lastModified}}</td>
 
         <td>
             <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
 
-                <a class="green" href="/etc/esadapter/fieldmappingdetails.html?type={{type}}">
+                <a class="green" href="/etc/esadapter/fieldmappingdetails.html?type={{esType}}">
                     <i class="icon-pencil bigger-130"></i>
                 </a>
 
-                <a class="red" href="#add-mapping-content-modal" data-toggle="modal" data-typename="{{type}}">
+                <a class="red" href="#add-mapping-content-modal" data-toggle="modal" data-typename="{{esType}}">
                     <i class="icon-trash bigger-130"></i>
                 </a>
             </div>

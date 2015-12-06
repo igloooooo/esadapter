@@ -65,7 +65,7 @@
                                     <label class="col-sm-3 control-label no-padding-right" for="result-contain"> Result: </label>
 
                                     <div class="col-sm-9">
-                                        <div id="result-contain"></div>
+                                        <div id="result-contain" style="height: 800px"></div>
                                     </div>
                                 </div>
                             </form>

@@ -10,33 +10,31 @@
 
         <div class="panel-collapse collapse" id="faq-2-1" style="height: 0px;">
             <div class="panel-body">
-                <div class="well well-sm">
-                    {
-                    "query": {
-                    "filtered": {
-                    "query": {
-                    "term": {
+                    <pre>{
+    "query": {
+        "filtered": {
+            "query": {
+                "term": {
                     "name": "test"
-                    }
-                    },
-                    "filter": {
-                    "or": [
+                }
+            },
+            "filter": {
+                "or": [
                     {
-                    "term": {
-                    "categories": "/foo/bar"
-                    }
+                        "term": {
+                            "categories": "/foo/bar"
+                        }
                     },
                     {
-                    "term": {
-                    "categories": "/fool"
+                        "term": {
+                            "categories": "/fool"
+                        }
                     }
-                    }
-                    ]
-                    }
-                    }
-                    }
-                    }
-                </div>
+                ]
+            }
+        }
+    }
+}</pre>
             </div>
         </div>
     </div>

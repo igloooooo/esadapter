@@ -1,6 +1,7 @@
 package au.com.iglooit.espower.esadapter.servlet;
 
 import au.com.iglooit.espower.esadapter.core.dto.FieldMappingDTO;
+import au.com.iglooit.espower.esadapter.core.mapping.CustomerAssetMapping;
 import au.com.iglooit.espower.esadapter.service.CustomerFieldMappingService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;

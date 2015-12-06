@@ -9,6 +9,7 @@ import java.util.Date;
  * Created by nicholaszhu on 30/11/2015.
  */
 public final class DateUtil {
+    private static final String DATE_FORMAT = "YYYY-MM-dd HH:mm";
     private DateUtil() {
 
     }
@@ -84,5 +85,9 @@ public final class DateUtil {
         int day = calendar.get(Calendar.DATE);
         calendar.set(year, month, day, 23, 59, 59);
         return calendar.getTime();
+    }
+
+    public static String print(Date date) {
+        return new SimpleDateFormat(DATE_FORMAT).format(date);
     }
 }

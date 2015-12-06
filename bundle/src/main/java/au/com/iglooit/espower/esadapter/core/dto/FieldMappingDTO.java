@@ -11,7 +11,7 @@ public class FieldMappingDTO {
     private String index;
     private String esType;
     private String cqType;
-    private Date lastModified;
+    private String lastModified;
     private Boolean valid;
     private List<CustomerFieldMapItemDTO> children = new ArrayList<CustomerFieldMapItemDTO>();
 
@@ -39,11 +39,11 @@ public class FieldMappingDTO {
         this.cqType = cqType;
     }
 
-    public Date getLastModified() {
+    public String getLastModified() {
         return lastModified;
     }
 
-    public void setLastModified(Date lastModified) {
+    public void setLastModified(String lastModified) {
         this.lastModified = lastModified;
     }
 
