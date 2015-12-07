@@ -1,5 +1,7 @@
 package au.com.iglooit.espower.esadapter.core.dto.statistic;
 
+import au.com.iglooit.espower.esadapter.util.StatisticUtil;
+
 /**
  * Created by nicholaszhu on 26/11/2015.
  */
@@ -45,7 +47,7 @@ public class StatisticBoardDTO {
     }
 
     public Double getAverageQuery() {
-        return averageQuery;
+        return StatisticUtil.round(averageQuery, 2);
     }
 
     public void setAverageQuery(Double averageQuery) {

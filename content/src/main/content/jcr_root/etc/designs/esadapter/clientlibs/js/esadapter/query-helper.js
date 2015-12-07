@@ -11,13 +11,25 @@ jQuery(document).ready(function () {
         $.ajax({
             type: "POST",
             url: "/bin/esadapter/queryexplain",
-            data: JSON.stringify(JSON.parse(queryContent.get())),
+            data: JSON.stringify(queryContent.get()),
             contentType: 'application/json',
             success: function (e) {
                 var json = JSON.parse(e);
                 editor.set(json.hits);
                 $("#time-took").val(json.took);
-                $("#total-result").val(json._shards.total);
+                $("#total-result").val(json._shards.total)
+                $.gritter.add({
+                    title: 'Query Success!',
+                    text: 'Query Success',
+                    class_name: 'gritter-info gritter-center'
+                })
+            },
+            error: function(e) {
+                $.gritter.add({
+                    title: 'Query Error',
+                    text: 'Can NOT query.',
+                    class_name: 'gritter-error gritter-center'
+                })
             }
         });
     });

@@ -11,29 +11,13 @@
         <div class="panel-collapse collapse" id="faq-2-1" style="height: 0px;">
             <div class="panel-body">
                     <pre>{
+  "filtered": {
     "query": {
-        "filtered": {
-            "query": {
-                "term": {
-                    "name": "test"
-                }
-            },
-            "filter": {
-                "or": [
-                    {
-                        "term": {
-                            "categories": "/foo/bar"
-                        }
-                    },
-                    {
-                        "term": {
-                            "categories": "/fool"
-                        }
-                    }
-                ]
-            }
-        }
+      "query_string": {
+        "query": "pdf"
+      }
     }
+  }
 }</pre>
             </div>
         </div>

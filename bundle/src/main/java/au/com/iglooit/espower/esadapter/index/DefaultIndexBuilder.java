@@ -81,9 +81,13 @@ public class DefaultIndexBuilder implements IndexBuilder {
                 extractProperties(metaData.getProperties(), builder);
                 builder.endObject();
             }
-            if (damContent.hasNode("renditions/original/jcr:content")) {
-                Node originalData = damContent.getNode("renditions/original/jcr:content");
-                builder.field("file", extractDamOriginalData(originalData));
+            if(metaData.hasProperty("dam:Fileformat")) {
+                if (SUPPORT_DOCUMENT.contains(metaData.getProperty("dam:Fileformat").getString())) {
+                    if (damContent.hasNode("renditions/original/jcr:content")) {
+                        Node originalData = damContent.getNode("renditions/original/jcr:content");
+                        builder.field("file", extractDamOriginalData(originalData));
+                    }
+                }
             }
         }
 
